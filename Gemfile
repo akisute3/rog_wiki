@@ -28,3 +28,6 @@ end
 gem 'slim-rails'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+
+gem 'git'
+gem 'org-ruby'

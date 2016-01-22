@@ -1,0 +1,15 @@
+h1 Listing wikis
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Created
+      th Updated
+
+  tbody
+    - @wikis.each do |wiki|
+      tr
+        td = link_to wiki.title, wiki.title
+        td = wiki.created_at.to_s(:db)
+        td = wiki.updated_at.to_s(:db)

@@ -25,26 +25,19 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="#"RogWiki
+          a.navbar-brand href="/home" Rog Wiki
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              li= link_to 'Index', wikis_path
+              li= link_to 'New', new_wiki_path
+              - if ['edit', 'update'].include? controller.action_name
+                li= link_to 'Show', @wiki
+              - if controller.action_name == 'show'
+                li= link_to 'Edit', edit_wiki_path
+                li= link_to_if(@wiki.title != 'home','Delete', wiki_path(@wiki), method: :delete,
+                  data: {confirm: "\"#{@wiki.title}\" を削除します。よろしいですか？"}) {}
 
     .container
       .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
-
-      footer
-        p &copy; Company 2016
+        = bootstrap_flash
+        = yield
