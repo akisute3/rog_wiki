@@ -8,10 +8,13 @@ root_pathname = Pathname.new(APP_CONFIG[:root_path]).expand_path
 root_pathname.mkpath
 GIT_REPO = Git.init(root_pathname.to_s)
 
+# user.name, user.email が登録されていなければ登録
+GIT_REPO.config('user.name', 'RogWiki Default User') if GIT_REPO.config('user.name').empty?
+GIT_REPO.config('user.email', 'rogwiki@email.com') if GIT_REPO.config('user.email').empty?
+
 # 初回起動時には /home のページに README.org をコミット
-g = GIT_REPO
 begin
-  g.log.size
+  GIT_REPO.log.size
 rescue => e
   # 例外が発生するかどうかで git にログがないことを判別
   raise e unless e.message.include?("fatal: bad default revision 'HEAD'")
