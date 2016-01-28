@@ -6,7 +6,6 @@ class Wiki
   validates :title, presence: true
   validate :changed_content
 
-  REPO = Git.init(APP_CONFIG[:root_path])
   attr_accessor :title, :content, :comment
 
   # XXX: missing required keys: [:id] 対策
@@ -66,11 +65,11 @@ class Wiki
     @pathname.write(content)
 
     # git へコミット
-    REPO.add(@pathname.to_s)
+    GIT_REPO.add(@pathname.to_s)
     if @comment.empty?
       @comment = (log.size.zero?) ? "Create #{title}" : "Update #{title}"
     end
-    REPO.commit(@comment)
+    GIT_REPO.commit(@comment)
 
     true
   end
@@ -80,15 +79,15 @@ class Wiki
     @pathname.delete
 
     # git へコミット
-    REPO.add(@pathname.to_s)
-    REPO.commit("Delete #{title}")
+    GIT_REPO.add(@pathname.to_s)
+    GIT_REPO.commit("Delete #{title}")
   end
 
 
   private
 
   def log
-    REPO.log.path(@pathname.relative_path_from_root.to_s)
+    GIT_REPO.log.path(@pathname.relative_path_from_root.to_s)
   end
 
   def changed_content
