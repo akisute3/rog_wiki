@@ -1,0 +1,21 @@
+datastore:
+  build: containers/datastore
+
+rails:
+  build: .
+  ports:
+    - '3000:3000'
+  environment:
+    - RAILS_ENV=production
+    - SECRET_KEY_BASE
+  volumes_from:
+    - datastore
+
+nginx:
+  build: containers/nginx
+  ports:
+    - '8080:80'
+  volumes_from:
+    - datastore
+  links:
+    - rails
