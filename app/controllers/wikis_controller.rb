@@ -8,11 +8,11 @@ class WikisController < ApplicationController
   end
 
   def show
-    redirect_to(action: :new, id: params[:id]) unless @wiki.exist?
+    redirect_to(action: :new, id: params[:page]) unless @wiki.exist?
   end
 
   def new
-    @wiki = Wiki.new(title: params[:id])
+    @wiki = Wiki.new(title: params[:page])
   end
 
   def edit
@@ -45,7 +45,7 @@ class WikisController < ApplicationController
   private
 
   def set_wiki
-    @wiki = Wiki.read(params[:id])
+    @wiki = Wiki.read(params[:page])
   end
 
   def wiki_params

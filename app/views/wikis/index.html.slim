@@ -10,6 +10,6 @@ table.table.table-striped
   tbody
     - @wikis.each do |wiki|
       tr
-        td = link_to wiki.title, wiki.title
+        td = link_to wiki.title, wiki_path(wiki)
         td = wiki.created_at.to_s(:db)
         td = wiki.updated_at.to_s(:db)
