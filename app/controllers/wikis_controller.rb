@@ -23,7 +23,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to action: :show, id: @wiki.title }
+        format.html { redirect_to action: :show, page: @wiki.title }
       else
         format.html { render action: (action_name == 'create') ? :new : :edit }
       end
