@@ -16,9 +16,6 @@ GIT_REPO.config('user.email', 'rogwiki@email.com') if GIT_REPO.config('user.emai
 begin
   GIT_REPO.log.size
 rescue => e
-  # 例外が発生するかどうかで git にログがないことを判別
-  raise e unless e.message.include?("fatal: bad default revision 'HEAD'")
-
   # README.org を root_path/home.org にコピーして最初のコミットを行う
   FileUtils.copy(Rails.root.join('README.org').to_s, root_pathname.join('home.org'))
   GIT_REPO.add((root_pathname + 'home.org').to_s)
