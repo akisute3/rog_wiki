@@ -36,6 +36,14 @@ html lang="en"
                 li= link_to 'Edit', edit_wiki_path
                 li= link_to_if(@wiki.title != 'home','Delete', wiki_path(@wiki), method: :delete,
                   data: {confirm: "\"#{@wiki.title}\" を削除します。よろしいですか？"}) {}
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                  | Help
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a href="http://www.geocities.jp/km_pp1/org-mode/org-mode-document.html" Markup
 
     .container
       .row
