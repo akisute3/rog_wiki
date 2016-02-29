@@ -64,12 +64,13 @@ class Wiki
     @pathname.dirname.mkpath
     @pathname.write(content)
 
-    # git へコミット
+    # git へコミット (プッシュ)
     GIT_REPO.add(@pathname.to_s)
     if @comment.empty?
       @comment = (log.size.zero?) ? "Create #{title}" : "Update #{title}"
     end
     GIT_REPO.commit(@comment)
+    GIT_REPO.push if GIT_REPO.remote('origin').url
 
     true
   end
@@ -78,9 +79,10 @@ class Wiki
     # ファイル削除
     @pathname.delete
 
-    # git へコミット
+    # git へコミット (プッシュ)
     GIT_REPO.add(@pathname.to_s)
     GIT_REPO.commit("Delete #{title}")
+    GIT_REPO.push if GIT_REPO.remote('origin').url
   end
 
 

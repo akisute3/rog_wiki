@@ -1,1 +1,4 @@
 root_path: /wiki
+
+# 設定する場合は push の際のパスワード入力不要にしておくこと
+remote_server: null
