@@ -1,5 +1,7 @@
 # coding: utf-8
-class OperationsController < ApplicationController
+class ApiController < ApplicationController
+
+  protect_from_forgery except: [:pull]
 
   def pull
     GIT_REPO.pull

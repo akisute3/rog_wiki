@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/pull' => 'operations#pull'
+  post '/pull' => 'api#pull'
 
   # resources :wikis, id: /.+/
 
