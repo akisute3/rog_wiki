@@ -62,7 +62,7 @@ class Wiki
 
     # ディレクトリ・ファイル作成
     @pathname.dirname.mkpath
-    @pathname.write(content)
+    @pathname.binwrite(content.encode(Encoding::UTF_8, universal_newline: true))
 
     # git へコミット (プッシュ)
     GIT_REPO.add(@pathname.to_s)
