@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/pull' => 'operations#pull'
+
   # resources :wikis, id: /.+/
 
   get    '/wikis'            => 'wikis#index'
