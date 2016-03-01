@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "honoka";
+
+.field_with_errors {
+    @extend .has-error;
+}
+
+.highlight pre {
+    background-color: #111;
+    color: #f8f8f2;
+}

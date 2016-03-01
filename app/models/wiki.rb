@@ -45,7 +45,7 @@ class Wiki
   alias :persisted? :exist?
 
   def to_html
-    Orgmode::Parser.new(content).to_html
+    Orgmode::Parser.new(content, { markup_file: "#{Rails.root}/config/html-tags.yml" }).to_html
   end
 
   def created_at
