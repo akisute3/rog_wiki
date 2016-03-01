@@ -25,3 +25,8 @@
     background-color: #111;
     color: #f8f8f2;
 }
+
+.title {
+    @extend .well;
+    margin: 0px -19px;
+}
