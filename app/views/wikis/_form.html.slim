@@ -4,18 +4,15 @@
     = f.label :title, :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'form-control'
-    = f.error_span(:title)
 
   .form-group
     = f.label :content, class: 'control-label'
     .controls
       = f.text_area :content, class: 'form-control', rows: 12
-    = f.error_span(:content)
 
   .form-group
     = f.label :comment, class: 'control-label'
     .controls
       = f.text_field :comment, class: 'form-control'
-    = f.error_span(:comment)
 
   = f.submit nil, :class => 'btn btn-primary'

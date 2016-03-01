@@ -27,7 +27,7 @@ end
 
 gem 'slim-rails'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'honoka-rails'
 
 gem 'git'
 gem 'org-ruby'
