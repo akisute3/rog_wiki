@@ -31,3 +31,4 @@ gem 'honoka-rails'
 
 gem 'git'
 gem 'org-ruby'
+gem 'pygments.rb'
